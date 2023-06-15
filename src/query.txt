@@ -10,3 +10,13 @@
 10\SELECT DISTINCT videogame_id FROM reviews WHERE rating LIKE 5;
 11\SELECT COUNT(*) AS N_reviews, AVG(rating) AS A_rating FROM reviews WHERE videogame_id = 412;
 12\SELECT COUNT(*) AS N_games FROM videogames WHERE software_house_id = 1 AND YEAR(release_date) = 2018;
+
+
+group
+
+1\SELECT country, COUNT(*) AS house_count FROM software_houses GROUP BY country;
+2\SELECT videogame_id, COUNT(*) AS N_review FROM reviews GROUP BY videogame_id;
+3\SELECT pegi_label_id, COUNT(*) AS N_games FROM pegi_label_videogame GROUP BY pegi_label_id;
+4\SELECT YEAR(release_date) AS release_year, COUNT(*) AS N_games FROM videogames GROUP BY release_year;
+5\SELECT device_id, COUNT(*) AS device_games FROM device_videogame GROUP BY device_id;
+6\SELECT videogame_id, AVG(rating) AS A_rating FROM reviews GROUP BY videogame_id ORDER BY A_rating DESC;

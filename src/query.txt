@@ -20,3 +20,12 @@ group
 4\SELECT YEAR(release_date) AS release_year, COUNT(*) AS N_games FROM videogames GROUP BY release_year;
 5\SELECT device_id, COUNT(*) AS device_games FROM device_videogame GROUP BY device_id;
 6\SELECT videogame_id, AVG(rating) AS A_rating FROM reviews GROUP BY videogame_id ORDER BY A_rating DESC;
+
+
+Join
+1\SELECT DISTINCT players.* FROM players JOIN reviews ON players.id = reviews.player_id;
+2\SELECT DISTINCT videogames.id FROM videogames JOIN tournament_videogame ON videogames.id = tournament_videogame.videogame_id JOIN tournaments ON tournament_videogame.tournament_id = tournaments.id WHERE tournaments.year = 2016;
+3\SELECT videogames.id AS game_id, categories.name FROM videogames JOIN category_videogame ON videogames.id = category_videogame.videogame_id JOIN categories ON category_videogame.category_id = categories.id;
+4\SELECT DISTINCT software_houses.name FROM software_houses JOIN videogames ON software_houses.id = videogames.software_house_id WHERE YEAR(videogames.release_date) > 2020;
+5\SELECT software_houses.name AS software_house_name, awards.name AS award_name FROM software_houses JOIN videogames ON software_houses.id = videogames.software_house_id JOIN award_videogame ON videogames.id = award_videogame.videogame_id JOIN awards ON award_videogame.award_id = awards.id;
+6\

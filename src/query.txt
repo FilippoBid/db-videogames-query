@@ -29,3 +29,6 @@ Join
 4\SELECT DISTINCT software_houses.name FROM software_houses JOIN videogames ON software_houses.id = videogames.software_house_id WHERE YEAR(videogames.release_date) > 2020;
 5\SELECT software_houses.name AS software_house_name, awards.name AS award_name FROM software_houses JOIN videogames ON software_houses.id = videogames.software_house_id JOIN award_videogame ON videogames.id = award_videogame.videogame_id JOIN awards ON award_videogame.award_id = awards.id;
 6\
+7\SELECT DISTINCT videogames.* FROM videogames JOIN tournament_videogame ON videogames.id = tournament_videogame.videogame_id JOIN tournaments ON tournament_videogame.tournament_id = tournaments.id JOIN player_tournament ON tournaments.id = player_tournament.tournament_id JOIN players ON player_tournament.player_id = players.id WHERE players.name LIKE 'S%';
+8\SELECT DISTINCT tournaments.city FROM tournaments JOIN tournament_videogame ON tournaments.id = tournament_videogame.tournament_id JOIN award_videogame ON tournament_videogame.videogame_id = award_videogame.videogame_id JOIN awards ON award_videogame.award_id = awards.id JOIN videogames ON award_videogame.videogame_id = videogames.id WHERE awards.name = "Gioco dell'anno" AND YEAR(videogames.release_date) = 2018;
+9\
